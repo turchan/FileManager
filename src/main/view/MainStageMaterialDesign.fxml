@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.view.MainStageController">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+            <Menu mnemonicParsing="false" text="Repository">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuNewRepositoryList" text="New Repository List" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuOpenRepositoryList" text="Open Repository List" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuSaveRepositoryList" text="Save Repository List" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuSaveAs" text="Save as..." />
+                  <Menu mnemonicParsing="false" text="Open Recent" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Quit" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="File">
+              <items>
+                <MenuItem mnemonicParsing="false" text="New Directory" />
+                  <MenuItem mnemonicParsing="false" text="Open Directory" />
+                  <MenuItem mnemonicParsing="false" text="Open File" />
+                  <MenuItem mnemonicParsing="false" text="Download Directory" />
+                  <MenuItem mnemonicParsing="false" text="Download File" />
+                  <MenuItem mnemonicParsing="false" text="Remove" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="About" />
+               </items>
+            </Menu>
+      </menus>
+    </MenuBar>
+      <AnchorPane minWidth="1000.0" prefHeight="578.0" prefWidth="1000.0">
+         <children>
+            <VBox layoutX="23.0" layoutY="14.0">
+               <children>
+                  <Label text="User">
+                     <font>
+                        <Font name="Roboto" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label text="email@gmail.com" />
+               </children>
+            </VBox>
+            <HBox layoutX="14.0" layoutY="80.0" prefHeight="26.0" prefWidth="253.0" spacing="15.0">
+               <children>
+                  <JFXButton lineSpacing="10.0" maxHeight="26.0" maxWidth="121.0" minHeight="0.0" minWidth="100.0" prefHeight="26.0" prefWidth="121.0" text="Authorization" />
+                  <JFXButton lineSpacing="15.0" maxWidth="138.0" minHeight="25.0" minWidth="100.0" prefHeight="26.0" prefWidth="111.0" text="Registration" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="521.0" prefHeight="32.0" prefWidth="261.0" spacing="10.0">
+               <children>
+                  <JFXButton onAction="#handleCreateRepository" prefHeight="32.0" prefWidth="128.0" text="Create Repository" />
+                  <JFXButton onAction="#handleRemoveRepository" prefHeight="31.0" prefWidth="134.0" text="Remove Repository" />
+               </children>
+            </HBox>
+            <HBox layoutX="310.0" layoutY="521.0" spacing="10.0">
+               <children>
+                  <JFXButton onAction="#handleNewDirectory" prefHeight="31.0" prefWidth="100.0" text="New Directory" />
+                  <JFXButton onAction="#handleOpenDirectory" prefHeight="31.0" prefWidth="100.0" text="Open directory" />
+                  <JFXButton onAction="#handleOpenFile" prefHeight="31.0" prefWidth="100.0" text="Open File" />
+                  <JFXButton onAction="#handleDownloadDirectory" prefHeight="31.0" prefWidth="123.0" text="Download Directory" />
+                  <JFXButton onAction="#handleDownloadFile" prefHeight="31.0" prefWidth="100.0" text="Download File" />
+                  <JFXButton onAction="#handleRemove" prefHeight="31.0" prefWidth="100.0" text="Remove" />
+               </children>
+            </HBox>
+            <JFXTextField fx:id="input" layoutX="791.0" layoutY="1.0" prefHeight="26.0" prefWidth="200.0" />
+            <JFXTreeTableView fx:id="fileTreeTableView" layoutX="282.0" layoutY="41.0" prefHeight="471.0" prefWidth="711.0" />
+            <JFXTreeTableView fx:id="repositoryTableView" layoutX="9.0" layoutY="106.0" prefHeight="408.0" prefWidth="262.0" />
+         </children>
+      </AnchorPane>
+  </children>
+</VBox>
