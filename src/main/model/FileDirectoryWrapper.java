@@ -7,14 +7,20 @@ import java.util.List;
 @XmlRootElement(name = "repositories")
 public class FileDirectoryWrapper
 {
-    private List<FileDirectory> fileDirectory;
+    private List<FileDirectory> file;
+    private List<Directory> directory;
 
-    @XmlElement(name = "repository")
+    @XmlElement(name = "file")
     public List<FileDirectory> getFileDirectory() {
-        return fileDirectory;
+        return file;
     }
 
-    public void setFileDirectory(List<FileDirectory> fileDirectory) {
-        this.fileDirectory = fileDirectory;
+    public void setFileDirectory(List<FileDirectory> file) {
+        this.file = file;
     }
+
+    @XmlElement(name = "directory")
+    public List<Directory> getDirectory() { return directory; }
+
+    public void setDirectory(List<Directory> directory) { this.directory = directory; }
 }

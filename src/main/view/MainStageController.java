@@ -2,8 +2,6 @@ package main.view;
 
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableView;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -20,7 +18,6 @@ import java.io.*;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.function.Predicate;
 
 import static main.view.TableModel.*;
 
@@ -38,7 +35,7 @@ public class MainStageController implements Initializable
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
-    {
+        {
         TreeItem<FileDirectory> rootNode = getModel();
         rootNode.setExpanded(true);
 
@@ -52,18 +49,10 @@ public class MainStageController implements Initializable
         fileTreeTableView.setShowRoot(false);
         fileTreeTableView.getSelectionModel().selectFirst();
 
-        input.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                fileTreeTableView.setPredicate(new Predicate<TreeItem<FileDirectory>>() {
-                    @Override
-                    public boolean test(TreeItem<FileDirectory> fileDirectory) {
-                        boolean flag = fileDirectory.getValue().name.getValue().contains(newValue);
-                        return flag;
-                    }
-                });
-            }
-        });
+        input.textProperty().addListener((observable, oldValue, newValue) -> fileTreeTableView.setPredicate(fileDirectory -> {
+            boolean flag = fileDirectory.getValue().name.getValue().contains(newValue);
+            return flag;
+        }));
 
         TreeItem<FileDirectory> repNode = getModel();
         repNode.setExpanded(true);
@@ -169,8 +158,6 @@ public class MainStageController implements Initializable
         TreeItem<FileDirectory> selectedItem = sm.getModelItem(rowIndex);
 
         selectedItem.getChildren().add(repository);
-
-        main.getFileData().add(new FileDirectory(repository));
 
         selectedItem.setExpanded(false);
 
@@ -470,10 +457,6 @@ public class MainStageController implements Initializable
 
             fos.close();
             fin.close();
-        }
-        catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -3,24 +3,18 @@ package main.model;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.control.TreeItem;
 
-import javax.xml.bind.annotation.XmlElement;
 import java.util.List;
 
 public class FileDirectory extends RecursiveTreeObject<FileDirectory>
 {
-    @XmlElement
     public StringProperty name;
-    @XmlElement
     public StringProperty category;
-    @XmlElement
     public StringProperty comment;
-    @XmlElement
     public StringProperty path;
     public List<FileDirectory> list;
 
-    public FileDirectory(TreeItem<FileDirectory> repository) { this(null, null, null, null); }
+    public FileDirectory() { this(null, null, null, null); }
 
     public FileDirectory(String name, String category, String comment)
     {
