@@ -1,6 +1,6 @@
 # FileManager
 
-Desktop program for organization, managing, saving and searching information with big amount of data(files and directories).
+Desktop program for organization, managing, saving and searching information with big amount of data(files and directories) on your computer. 
 
 ## Technologies
 
